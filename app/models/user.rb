@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure :password
     has_many :user_interests
     has_many :interests, through: :user_interests
     has_many :sent_messages, class_name: "Message"
