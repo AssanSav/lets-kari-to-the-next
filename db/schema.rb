@@ -30,24 +30,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_164519) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.string "city"
-    t.string "age"
-    t.string "sex"
-    t.string "orientation"
-    t.string "ethnicity"
-    t.string "height"
-    t.string "body_shape"
-    t.string "children"
-    t.string "reletionship"
-    t.string "education"
-    t.string "image"
-    t.text "bio"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "user_interests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "interest_id"
@@ -58,6 +40,18 @@ ActiveRecord::Schema.define(version: 2020_06_11_164519) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
+    t.string "image"
+    t.integer "age"
+    t.string "city"
+    t.string "gender"
+    t.string "orientation"
+    t.string "ethnicity"
+    t.string "height"
+    t.string "body_shape"
+    t.string "children"
+    t.string "relationship"
+    t.string "education"
+    t.text "bio"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
