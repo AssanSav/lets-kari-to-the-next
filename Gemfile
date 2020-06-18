@@ -24,6 +24,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails', '~> 0.3.9'
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'fast_jsonapi', '~> 1.5'
+gem 'image_processing'
+gem 'activestorage'
+gem "aws-sdk-s3", require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
