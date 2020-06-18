@@ -1,6 +1,16 @@
 class Api::V1::UsersController < ApplicationController
   wrap_parameters :user, include: [:password, :password_confirmation,:username, :email, :age, :image, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio,  :interest_ids]
   
+  def index 
+    users = User.all.order(created_at: :desc).where.not(id: current_user.id)
+    if users 
+      render json: {
+        status: 200,
+        users: UserSerializer.new(users)
+      }
+    end
+  end
+
   def create
     user = User.create(user_params)
     if user
