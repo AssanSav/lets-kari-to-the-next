@@ -5,4 +5,9 @@ class UserSerializer
   attributes :avatar do |object|
     object.avatar
   end
+
+  attributes :interests do |object|
+    object.interests
+  end
+  
 end
