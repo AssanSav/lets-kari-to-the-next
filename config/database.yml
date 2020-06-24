@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: lets_kari_to_the_next_production
-  username: lets_kari_to_the_next
-  password: <%= ENV['LETS_KARI_TO_THE_NEXT_DATABASE_PASSWORD'] %>
+  # database: lets_kari_to_the_next_production
+  # username: lets_kari_to_the_next
+  # password: <%= ENV['LETS_KARI_TO_THE_NEXT_DATABASE_PASSWORD'] %>
