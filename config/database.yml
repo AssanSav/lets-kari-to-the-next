@@ -71,7 +71,7 @@ test:
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
 #
-#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+  DATABASE_URL="postgres://kiqjfkvhctwcnl:9fe0dd103b1f1faec292ee8b5441c551daf1fd7710ccc77be29299689b0409fe@ec2-34-197-188-147.compute-1.amazonaws.com:5432/dfmlnn1fgdo7si
 #
 # You can use this database configuration with:
 #
