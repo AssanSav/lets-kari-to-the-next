@@ -4,10 +4,18 @@ Rails.application.routes.draw do
     namespace :v1 do 
       resources :users
       resources :interests
-      resources :messages
       resources :avatars
+      resources :messages
+
+      resources :messages do 
+        member do 
+          patch :update_send_message
+          put :update_received_message
+        end
+      end
     end
   end
+
 
   resources :users
 
@@ -17,4 +25,5 @@ Rails.application.routes.draw do
   get "api/v1/matches", to: "api/v1/users#my_matches"
   get "api/v1/messages-outbox", to: "api/v1/messages#outbox"
   get "api/v1/messages-inbox", to: "api/v1/messages#inbox"
+  # put "api/v1/delete_sent_message", to: "api/v1/messages#delete_sent_message"
 end
