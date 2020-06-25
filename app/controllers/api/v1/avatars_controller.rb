@@ -3,6 +3,7 @@ class Api::V1::AvatarsController < ApplicationController
     def update
         user = User.find(params[:user_id])
         if params[:file] != ""
+            # binding.pry
             user.avatar.attach(params[:file])
             photo = url_for(user.avatar)
         elsif params[:camera]
