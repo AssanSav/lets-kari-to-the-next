@@ -14,7 +14,6 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -72,7 +71,7 @@ test:
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
 #
-# process.env.DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
 #
 # You can use this database configuration with:
 #
@@ -81,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  # database: lets_kari_to_the_next_production
-  # username: lets_kari_to_the_next
-  # password: <%= ENV['LETS_KARI_TO_THE_NEXT_DATABASE_PASSWORD'] %>
+  database: lets_kari_to_the_next_production
+  username: lets_kari_to_the_next
+  password: <%= ENV['LETS_KARI_TO_THE_NEXT_DATABASE_PASSWORD'] %>
