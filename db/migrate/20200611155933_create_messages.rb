@@ -4,7 +4,6 @@ class CreateMessages < ActiveRecord::Migration[6.0]
       t.text :content
       t.integer :user_id
       t.integer :match_id
-      t.boolean :status
 
       t.timestamps
     end

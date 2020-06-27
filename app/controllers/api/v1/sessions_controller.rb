@@ -12,7 +12,7 @@ class Api::V1::SessionsController < ApplicationController
     else 
       render json: {
         status: 409,
-        error: user.errors.full_messages
+        error: ["Password or Email Incorrect!"]
       }
     end
   end
