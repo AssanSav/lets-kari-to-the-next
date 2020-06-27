@@ -27,6 +27,7 @@ gem 'fast_jsonapi', '~> 1.5'
 gem 'image_processing'
 gem 'activestorage'
 gem "aws-sdk-s3", require: false
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -1,7 +1,8 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do 
   allow do
-    origins "https://lets-meetup.netlify.app"
-    # ["https://lets-meetup.netlify.app"
+    origins ENV['FRONT_END_URL']
+    # 'http://localhost:3000'
+    # "https://lets-meetup.netlify.app"
     # 
   
     resource '*',
