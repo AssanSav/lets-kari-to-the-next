@@ -1,6 +1,7 @@
 # Rails.application.config.middleware.insert_before 0, Rack::Cors do 
 #   allow do
-#     origins "https://lets-meetup-app.herokuapp.com/"
+#     origins 'http://localhost:3000'
+#     # "https://lets-meetup-app.herokuapp.com/"
     
 #     resource '*',
 #       headers: :any,

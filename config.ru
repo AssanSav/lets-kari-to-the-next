@@ -10,7 +10,7 @@ use Rack::Cors do
   #  'https://lets-meetup-app.herokuapp.com'
    resource '*',
        :headers => :any,
-       :methods => [:get, :post, :delete, :put, :options]
+       :methods => [:get, :post, :delete, :put, :patch, :options]
  end
 end
 
