@@ -22,10 +22,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails', '~> 0.3.9'
-gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 gem 'fast_jsonapi', '~> 1.5'
 gem 'image_processing'
 gem 'activestorage'
+gem 'rack-cors'
 gem "aws-sdk-s3", require: false
 gem 'dotenv-rails', groups: [:development, :test]
 

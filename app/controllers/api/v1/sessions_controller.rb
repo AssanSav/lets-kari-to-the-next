@@ -11,7 +11,7 @@ class Api::V1::SessionsController < ApplicationController
       }
     else 
       render json: {
-        status: 409,
+        status: 500,
         error: ["Password or Email Incorrect!"]
       }
     end
