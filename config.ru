@@ -5,8 +5,8 @@ run Rails.application
 
 use Rack::Cors do
  allow do
-   origins '*'
-  #  ^(https?://(?:.+\.)?lets-meetup-app.herokuapp\.com(?::\d{1,5})?)$
+   origins ^(https?://(?:.+\.)?lets-meetup-app.herokuapp\.com(?::\d{1,5})?)$
+   credentials: true
   #  'https://lets-meetup-app.herokuapp.com'  Front-end APP URL
    resource '*',
        :headers => :any,
