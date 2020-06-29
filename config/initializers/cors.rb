@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do 
   allow do
-    origins 'https://lets-meetup-app.herokuapp.com'
+    origins "https://lets-carry-on.herokuapp.com"
     
     resource '*',
       headers: :any,
