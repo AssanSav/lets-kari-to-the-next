@@ -9,4 +9,8 @@ class MessageSerializer
   attributes :match_name do |object|
     object.match.username
   end
+
+  attributes :image do |object|
+    object.user.image
+  end
 end

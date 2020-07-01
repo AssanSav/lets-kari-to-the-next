@@ -18,6 +18,7 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def is_logged_in?
+    # binding.pry
     if !!session[:user_id] && current_user
       render json: {
         logged_in: true,

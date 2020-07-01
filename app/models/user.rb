@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :interests, through: :user_interests
     has_many :sent_messages, class_name: "Message", dependent: :destroy
     has_many :received_messages, class_name: "Message", foreign_key: "match_id", dependent: :destroy
+    has_many :messages
 
     validates_presence_of :username, :email, :age, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio
     validates_uniqueness_of :email, :username
