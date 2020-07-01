@@ -71,7 +71,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def destroy 
-    # binding.pry
     user = User.find(session[:user_id])
     if user && session.clear
       user.destroy
