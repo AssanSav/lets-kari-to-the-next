@@ -3,6 +3,7 @@ class Api::V1::SessionsController < ApplicationController
   def login 
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
+      binding.pry
       session[:user_id] = user.id
       render json: {
         status: 200,
@@ -18,7 +19,6 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def is_logged_in?
-    # binding.pry
     if !!session[:user_id] && current_user
       render json: {
         logged_in: true,
