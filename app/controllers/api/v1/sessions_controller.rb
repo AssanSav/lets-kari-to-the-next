@@ -17,8 +17,19 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
 
+  def destroy 
+    user = User.find(session[:user_id])
+    if user 
+      session.clear
+      render json: {
+        status: 200,
+        logout: true
+      }
+    end
+  end
+
   def is_logged_in?
-    if !!session[:user_id] && current_user
+    if session[:user_id].present? && current_user
       render json: {
         logged_in: true,
         user: UserSerializer.new(current_user),
@@ -32,15 +43,5 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
 
-  def destroy 
-    user = User.find(session[:user_id])
-    if user 
-      session.clear
-      render json: {
-        status: 200,
-        logout: true
-      }
-    end
-  end
 
 end
