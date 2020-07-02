@@ -34,11 +34,10 @@ class Api::V1::SessionsController < ApplicationController
 
   def destroy 
     user = User.find(session[:user_id])
-    if user 
-      session.clear
+    if user && session.clear
       render json: {
         status: 200,
-        logout: true
+        user: user
       }
     end
   end

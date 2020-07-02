@@ -1,10 +1,10 @@
 class Api::V1::MessagesController < ApplicationController
 
   def index 
-    received_messages = current_user.received_messages.map(&:clone)
-    sent_messages = current_user.sent_messages.map(&:clone)
+    received_messages = current_user.received_messages.where(received_visible: true).map(&:clone)
+    sent_messages = current_user.sent_messages.where(sent_visible: true).map(&:clone)
     messages = received_messages.concat(sent_messages).sort()
-    if messages
+    if  messages
       render json: {
         status: 200,
         messages: MessageSerializer.new(messages)
@@ -23,7 +23,7 @@ class Api::V1::MessagesController < ApplicationController
       render json: {
         status: 200,
         message: message,
-        sent_messages: MessageSerializer.new(current_user.sent_messages)
+        sent_messages: MessageSerializer.new(message)
       }
     else 
       render json: {
