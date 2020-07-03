@@ -24,7 +24,10 @@ class Api::V1::UsersController < ApplicationController
     else 
       render json: {
         status: 409,
-        error: user.errors.full_messages
+        passwordError: user.errors.messages[:password],
+        password_confirmation_error: user.errors.messages[:password],
+        username_error: user.errors.messages[:username],
+        email_error: user.errors.messages[:email]
       }
     end
   end

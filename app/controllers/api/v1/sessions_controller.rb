@@ -9,10 +9,15 @@ class Api::V1::SessionsController < ApplicationController
         user: UserSerializer.new(user),
         interests: user.interests
       }
-    else 
+    elsif user 
       render json: {
         status: 500,
-        error: ["Password or Email Incorrect!"]
+        passwordError: ["*Wrong Password!"],
+      }
+    else
+        render json: {
+        status: 500,
+        email_error: ["*Email Not Found!"]
       }
     end
   end

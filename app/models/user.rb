@@ -15,7 +15,14 @@ class User < ApplicationRecord
     before_create :set_default_avatar
 
     def set_default_avatar
-      self.image = "https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"
+      if self.gender == "Male"
+        self.image = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgMTnyu57w3n7MiSYwH99BIzbT-5HoQUA8Jw&usqp=CAU"
+      elsif self.gender == "Female"
+        self.image = "https://hers-magazine.com/wp-content/uploads/2018/10/avatar_female.jpg"
+      # else
+      #   self.image = "https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"
+      # end
+      end
     end
 
   def find_my_matches 
