@@ -27,7 +27,8 @@ class Api::V1::UsersController < ApplicationController
         passwordError: user.errors.messages[:password],
         password_confirmation_error: user.errors.messages[:password],
         username_error: user.errors.messages[:username],
-        email_error: user.errors.messages[:email]
+        email_error: user.errors.messages[:email],
+        gender_error: user.errors.messages[:gender]
       }
     end
   end
@@ -94,5 +95,5 @@ class Api::V1::UsersController < ApplicationController
   def user_params 
     params.require(:user).permit(:visibility, :password, :password_confirmation,:username, :email, :age, :image, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio, interest_ids: [])
   end
-  
+   
 end

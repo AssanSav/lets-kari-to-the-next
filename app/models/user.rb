@@ -8,7 +8,7 @@ class User < ApplicationRecord
     has_many :received_messages, class_name: "Message", foreign_key: "match_id", dependent: :destroy
     has_many :messages
 
-    validates_presence_of :username, :email
+    validates_presence_of :username, :email, :gender
     validates_uniqueness_of :email, :username
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
@@ -18,10 +18,7 @@ class User < ApplicationRecord
       if self.gender == "Male"
         self.image = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSgMTnyu57w3n7MiSYwH99BIzbT-5HoQUA8Jw&usqp=CAU"
       elsif self.gender == "Female"
-        self.image = "https://hers-magazine.com/wp-content/uploads/2018/10/avatar_female.jpg"
-      # else
-      #   self.image = "https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"
-      # end
+        self.image = "https://www.pngkit.com/png/detail/55-554008_woman-head-people-avatar-men-icon-png.png"
       end
     end
 
