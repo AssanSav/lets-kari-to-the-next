@@ -61,8 +61,8 @@ class Api::V1::UsersController < ApplicationController
     end
 
   def my_matches
-    matches = current_user.find_my_matches
-    if matches 
+    if current_user
+      matches = current_user.find_my_matches
       render json: {
         status: 200,
         matches: matches
