@@ -18,8 +18,8 @@ class Api::V1::MessagesController < ApplicationController
   end
     
   def create 
-    message = Message.create!(content: params[:message][:content], user_id: current_user.id, match_id: params[:message][:match_id])
-    if message 
+     message = Message.create(content: params[:message][:content], user_id: current_user.id, match_id: params[:message][:match_id])
+    if params[:message][:content]  != ""
       render json: {
         status: 200,
         message: message,
@@ -28,7 +28,7 @@ class Api::V1::MessagesController < ApplicationController
     else 
       render json: {
         status: 409,
-        error: message.errors.full_messages
+        error:  message.errors.messages[:content]
       }
     end
   end

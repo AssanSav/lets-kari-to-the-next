@@ -8,7 +8,8 @@ class User < ApplicationRecord
     has_many :received_messages, class_name: "Message", foreign_key: "match_id", dependent: :destroy
     has_many :messages
 
-    validates_presence_of :username, :email, :gender
+    validates_presence_of :username, :email, :gender, :orientation
+    validates_presence_of :interests, :length => {:minimun => 1}
     validates_uniqueness_of :email, :username
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 

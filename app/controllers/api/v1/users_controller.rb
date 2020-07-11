@@ -28,7 +28,9 @@ class Api::V1::UsersController < ApplicationController
         password_confirmation_error: user.errors.messages[:password],
         username_error: user.errors.messages[:username],
         email_error: user.errors.messages[:email],
-        gender_error: user.errors.messages[:gender]
+        gender_error: user.errors.messages[:gender],
+        orientation_error: user.errors.messages[:orientation],
+        interest_error: user.errors.messages[:interests]
       }
     end
   end
