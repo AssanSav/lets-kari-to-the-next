@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
   wrap_parameters :user, include: [:visibility, :password, :password_confirmation,:username, :email, :age, :image, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio,  :interest_ids]
   
   def index 
+ 
     users = User.all.where(visibility: true).order(created_at: :desc).where.not(id: current_user.id)
     if users 
       render json: {

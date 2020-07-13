@@ -13,7 +13,12 @@ class User < ApplicationRecord
     validates_uniqueness_of :email, :username
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
+    before_validation :capitalize_email
     before_create :set_default_avatar
+
+    def capitalize_email 
+      self.email = self.email.capitalize
+    end
 
     def set_default_avatar
       if self.gender == "Male"
