@@ -23,7 +23,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt'
 gem 'pry-rails', '~> 0.3.9'
 gem 'fast_jsonapi', '~> 1.5'
-gem 'image_processing'
 gem 'activestorage'
 gem 'rack-cors'
 gem "aws-sdk-s3", require: false
