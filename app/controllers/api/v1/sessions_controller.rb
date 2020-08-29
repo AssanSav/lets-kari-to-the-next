@@ -6,6 +6,7 @@ class Api::V1::SessionsController < ApplicationController
       session[:user_id] = user.id
       render json: {
         status: 200,
+        logged_in: true,
         user: UserSerializer.new(user),
         interests: user.interests
       }
@@ -42,6 +43,7 @@ class Api::V1::SessionsController < ApplicationController
     if user && session.clear
       render json: {
         status: 200,
+        logged_out: true,
         user: user
       }
     end
