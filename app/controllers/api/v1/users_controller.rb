@@ -26,7 +26,7 @@ class Api::V1::UsersController < ApplicationController
       render json: {
         status: 409,
         passwordError: user.errors.messages[:password],
-        password_confirmation_error: user.errors.messages[:password],
+        password_confirmation_error: user.errors.messages[:password_confirmation],
         username_error: user.errors.messages[:username],
         email_error: user.errors.messages[:email],
         gender_error: user.errors.messages[:gender],
