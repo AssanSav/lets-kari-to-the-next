@@ -6,18 +6,21 @@ class Api::V1::SessionsController < ApplicationController
       session[:user_id] = user.id
       render json: {
         status: 200,
+        loggedIn: true,
         user: UserSerializer.new(user),
         interests: user.interests
       }
     elsif user 
       render json: {
         status: 500,
+        loggedIn: false,
         passwordError: ["*Wrong Password!"],
       }
     else
         render json: {
         status: 500,
-        email_error: ["*Email Not Found!"]
+        loggedIn: false,
+        emailError: ["*Email Not Found!"]
       }
     end
   end
@@ -25,14 +28,18 @@ class Api::V1::SessionsController < ApplicationController
   def is_logged_in?
     if !!session[:user_id] && current_user
       render json: {
-        logged_in: true,
+        loggedIn: true,
         user: UserSerializer.new(current_user),
-        interests: current_user.interests
+        interests: current_user.interests,
+        allInterests: Interest.all,
+        users: User.all
       }
     else
         render json: {
-          logged_in: false,
-          message: "No Such User!"
+          status: 409,
+          loggedIn: false,
+          message: "No Such User!",
+          interests: Interest.all
         }
     end
   end

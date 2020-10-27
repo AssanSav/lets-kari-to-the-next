@@ -34,7 +34,7 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def outbox
-    messages = current_user.sent_messages.where(sent_visible: true)
+    messages = current_user.sent_messages.where(sent_visible: true).desc_order
     if messages 
       render json: {
         status: 200,
@@ -49,7 +49,7 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def inbox
-    messages = current_user.received_messages.where(received_visible: true)
+    messages = current_user.received_messages.where(received_visible: true).desc_order
     if messages
       render json: {
         status: 200,

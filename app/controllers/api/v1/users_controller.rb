@@ -1,8 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-  wrap_parameters :user, include: [:visibility, :password, :password_confirmation,:username, :email, :age, :image, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio,  :interest_ids]
+  wrap_parameters :user, include: [:visibility, :id, :password, :password_confirmation,:username, :email, :age, :image, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio,  :interest_ids]
   
   def index 
- 
     users = User.all.where(visibility: true).order(created_at: :desc).where.not(id: current_user.id)
     if users 
       render json: {
@@ -24,14 +23,14 @@ class Api::V1::UsersController < ApplicationController
       }
     else 
       render json: {
-        status: 409,
+        status: 500,
         passwordError: user.errors.messages[:password],
-        password_confirmation_error: user.errors.messages[:password_confirmation],
-        username_error: user.errors.messages[:username],
-        email_error: user.errors.messages[:email],
-        gender_error: user.errors.messages[:gender],
-        orientation_error: user.errors.messages[:orientation],
-        interest_error: user.errors.messages[:interests]
+        passwordConfirmationError: user.errors.messages[:password_confirmation],
+        usernameError: user.errors.messages[:username],
+        emailError: user.errors.messages[:email],
+        genderError: user.errors.messages[:gender],
+        orientationError: user.errors.messages[:orientation],
+        interestError: user.errors.messages[:interests]
       }
     end
   end
@@ -48,7 +47,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
    def update 
-      user = User.find(params[:id])
+    user = User.find(params[:id])
+    # binding.pry
       if user && user.update(user_params)
         render json: {
           status: 200,
@@ -57,8 +57,7 @@ class Api::V1::UsersController < ApplicationController
         }
       else 
         render json: {
-          status: 409,
-          error: user.errors.full_messages
+          user: UserSerializer.new(user),
         }
       end
     end
@@ -96,7 +95,7 @@ class Api::V1::UsersController < ApplicationController
   private 
 
   def user_params 
-    params.require(:user).permit(:visibility, :password, :password_confirmation,:username, :email, :age, :image, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio, interest_ids: [])
+    params.require(:user).permit(:visibility, :id, :password, :password_confirmation,:username, :email, :age, :image, :city, :gender, :orientation, :ethnicity, :height, :body_shape, :children, :relationship, :education, :bio, interest_ids: [])
   end
    
 end
